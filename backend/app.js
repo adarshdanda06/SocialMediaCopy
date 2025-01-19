@@ -11,10 +11,10 @@ const postRoutes = require('./routes/postInformation');
 const loginRegisterRoutes = require('./routes/loginRegister');
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://shoe-media.vercel.app'],
     credentials: true
   }));
-app.use(express.json());
+//app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('hi')
@@ -29,9 +29,11 @@ app.use('/postInfo', postRoutes);
 app.use('/followingInfo', followingRoutes);
 app.use('/users', userRoutes);
 app.use('/loginActions', loginRegisterRoutes);
+// added app.js instead of just /
 
-
-
+/*
 app.listen(PORT, () => {
     console.log(`Listening on localhost:${PORT}`)
-}); 
+});*/
+
+module.exports = app;
